@@ -10,8 +10,10 @@ def init_app():
         
         from .Test import Test
         from .popular_skills import popular_skills
+        from .strength_based_search import strength_based_search
 
         app.register_blueprint(Test.test_bp)
         app.register_blueprint(popular_skills.popular_skills_bp)
+        app.register_blueprint(strength_based_search.strength_based_search_bp)
 
         return app
