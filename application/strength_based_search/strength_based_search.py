@@ -3,6 +3,7 @@ import numpy as np
 
 from flask import Blueprint, request, make_response, jsonify
 from flask import current_app as app
+from random import seed, randint
 
 strength_based_search_bp = Blueprint('strength_based_search_bp', __name__)
 
@@ -48,14 +49,16 @@ def strength_based_search():
 
     requiredStrengths = respOp.json()['strengths']
     first = True
-    offset = 0
+    seed()
+    randInitialize = randint(0, 400001)
+    offset = randInitialize
     employees = []
     topEmployees = np.array([])
     topUsernames = np.array([])
     topScores = np.array([])
     imageURLs = np.array([])
 
-    while ((len(employees) == 5000) or (first == True)) and offset != 40000:
+    while ((len(employees) == 5000) or (first == True)) and offset != (randInitialize+10000):
         respEmployees = requests.post(f'https://search.torre.co/people/_search/?offset={offset}&size=5000&aggregate=false')
         if respEmployees.status_code == 400:
             return make_response('Information API of people search is not responding.', 400)
