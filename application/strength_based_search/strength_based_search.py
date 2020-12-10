@@ -44,7 +44,7 @@ def strength_based_search():
     jobID = request.args.get('job-id')
     n = int(request.args.get('size'))
     respOp = requests.get(f'https://torre.co/api/opportunities/{jobID}')
-    if respOp.status_code == 400:
+    if respOp.status_code != 200:
         return make_response('Information API of job opportunity with id is not responding.', 400)
 
     requiredStrengths = respOp.json()['strengths']
@@ -88,7 +88,7 @@ def strength_based_search():
         scoreSent = np.append(scoreSent, topScores[index])
         urlsSent = np.append(urlsSent, imageURLs[index])
 
-    best_employees = {'names': employeeSent.tolist(), 'usernames':userSent.tolist(), 'scores': scoreSent.tolist(), 'pictures': urlsSent.tolist()}
+    best_employees = {'names': employeeSent.tolist(), 'usernames':userSent.tolist(), 'scores': scoreSent.tolist(), 'pictures': urlsSent.tolist(), 'jobName': respOp.json()['serpTags']['title']}
     headers = {'Content-Type': 'applicaton/json'}
 
     return make_response(jsonify(best_employees), 200, headers)
