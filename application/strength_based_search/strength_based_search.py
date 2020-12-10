@@ -78,17 +78,12 @@ def strength_based_search():
     sortIndexes = np.argsort(-topScores, kind = 'mergesort')
 
     employeeSent = np.array([])
-    userSent = np.array([])
-    scoreSent = np.array([])
-    urlsSent = np.array([])
 
     for index in sortIndexes:
-        employeeSent = np.append(employeeSent, topEmployees[index])
-        userSent = np.append(userSent, topUsernames[index])
-        scoreSent = np.append(scoreSent, topScores[index])
-        urlsSent = np.append(urlsSent, imageURLs[index])
+        employeeObj = {'name': topEmployees[index], 'username': topUsernames[index], 'score': topScores[index], 'picture': imageURLs[index]}
+        employeeSent = np.append(employeeSent, employeeObj)
 
-    best_employees = {'names': employeeSent.tolist(), 'usernames':userSent.tolist(), 'scores': scoreSent.tolist(), 'pictures': urlsSent.tolist(), 'jobName': respOp.json()['serpTags']['title']}
+    best_employees = {'employees': employeeSent.tolist(), 'jobName': respOp.json()['serpTags']['title']}
     headers = {'Content-Type': 'applicaton/json'}
 
     return make_response(jsonify(best_employees), 200, headers)
