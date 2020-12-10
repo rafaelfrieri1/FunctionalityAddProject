@@ -13,5 +13,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
+## Technology
+For the backend code the Flask from Python framework was used.
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
