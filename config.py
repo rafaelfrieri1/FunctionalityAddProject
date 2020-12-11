@@ -4,6 +4,6 @@ from dotenv import load_dotenv
 
 class Config:
 
-    FLASK_ENV = 'development'
+    FLASK_ENV = 'deployment'
     FLASK_APP = 'wsgi.py'
-    DEBUG = True
+    DEBUG = False
