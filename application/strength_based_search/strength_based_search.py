@@ -84,6 +84,6 @@ def strength_based_search():
         employeeSent = np.append(employeeSent, employeeObj)
 
     best_employees = {'employees': employeeSent.tolist(), 'jobName': respOp.json()['serpTags']['title']}
-    headers = {'Content-Type': 'applicaton/json'}
+    headers = {'Content-Type': 'applicaton/json', 'Access-Control-Allow-Origin':'https://torre-application-front.herokuapp.com'}
 
     return make_response(jsonify(best_employees), 200, headers)

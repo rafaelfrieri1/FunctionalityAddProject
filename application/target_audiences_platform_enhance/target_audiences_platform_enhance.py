@@ -49,6 +49,6 @@ def target_audiences_platform_enhance():
 
 
     unpopular_audience = {'total': amountSent.tolist(), 'value': nameSent.tolist(), 'percentage_jobs': percentageSent.tolist()}
-    headers = {'Content-Type': 'applicaton/json'}
+    headers = {'Content-Type': 'applicaton/json', 'Access-Control-Allow-Origin':'https://torre-application-front.herokuapp.com'}
 
     return make_response(jsonify(unpopular_audience), 200, headers)
