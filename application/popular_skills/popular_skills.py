@@ -49,6 +49,6 @@ def popular_skills():
 
 
     pop_skills = {'total': amountSent.tolist(), 'value': nameSent.tolist(), 'percentage_jobs': percentageSent.tolist()}
-    headers = {'Content-Type': 'applicaton/json', 'Access-Control-Allow-Origin':'https://torre-application-front.herokuapp.com/'}
+    headers = {'Content-Type': 'applicaton/json', 'Access-Control-Allow-Origin':'https://torre-application-front.herokuapp.com'}
 
     return make_response(jsonify(pop_skills), 200, headers)
